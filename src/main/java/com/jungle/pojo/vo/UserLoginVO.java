@@ -1,5 +1,7 @@
 package com.jungle.pojo.vo;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -11,10 +13,14 @@ import java.io.Serializable;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@ApiModel(description = "员工登录返回的数据格式")
 public class UserLoginVO implements Serializable {
-
+    @ApiModelProperty("主键值")
     private Long id;
-    private String openid;
-    private String token;
 
+    @ApiModelProperty("用户名")
+    private String userName;
+
+    @ApiModelProperty("jwt令牌")
+    private String token;
 }

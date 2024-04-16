@@ -7,3 +7,8 @@ spring:
     username: root
     password: zbjforever0
 
+jungle:
+  jwt:
+    admin-secret-key: zbjforever0
+    admin-ttl: 7200000
+    admin-token-name: token
