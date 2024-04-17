@@ -3,7 +3,6 @@ package com.jungle.server.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.jungle.common.constant.MessageConstant;
-import com.jungle.common.constant.StatusConstant;
 import com.jungle.common.exception.*;
 import com.jungle.pojo.entity.User;
 import com.jungle.pojo.dto.UserLoginDTO;
@@ -65,6 +64,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         password = DigestUtils.md5DigestAsHex(password.getBytes());
         // 填入数据库
         User new_user = new User();
+        //BeanUtils.copyProperties(userRegisterDTO,new_user);
         new_user.setUsername(username);
         new_user.setPassword(password);
         userMapper.insert(new_user);

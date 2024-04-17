@@ -1,5 +1,6 @@
 package com.jungle.server.config;
 
+import com.jungle.server.interceptor.JwtTokenAdminInterceptor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -21,20 +22,21 @@ import springfox.documentation.spring.web.plugins.Docket;
 @Slf4j
 public class WebMvcConfiguration extends WebMvcConfigurationSupport {
 
-//    @Autowired
-//    private JwtTokenAdminInterceptor jwtTokenAdminInterceptor;
-//
-//    /**
-//     * 注册自定义拦截器
-//     *
-//     * @param registry
-//     */
-//    protected void addInterceptors(InterceptorRegistry registry) {
-//        log.info("开始注册自定义拦截器...");
-//        registry.addInterceptor(jwtTokenAdminInterceptor)
-//                .addPathPatterns("/admin/**")
-//                .excludePathPatterns("/admin/employee/login");
-//    }
+    @Autowired
+    private JwtTokenAdminInterceptor jwtTokenAdminInterceptor;
+
+    /**
+     * 注册自定义拦截器
+     *
+     * @param registry
+     */
+    protected void addInterceptors(InterceptorRegistry registry) {
+        log.info("开始注册自定义拦截器...");
+        registry.addInterceptor(jwtTokenAdminInterceptor)
+                .addPathPatterns("/**")  // 拦截哪些
+                .excludePathPatterns("/users/login")  // 除了
+                .excludePathPatterns("/users/register");
+    }
 
     /**
      * 通过knife4j生成接口文档

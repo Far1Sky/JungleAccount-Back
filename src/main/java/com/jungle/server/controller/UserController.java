@@ -47,11 +47,11 @@ public class UserController {
         Map<String, Object> claims = new HashMap<>();
         claims.put(JwtClaimsConstant.EMP_ID, user.getId());
         // TODO 写token逻辑
-//        String token = JwtUtil.createJWT(
-//                jwtProperties.getAdminSecretKey(),
-//                jwtProperties.getAdminTtl(),
-//                claims);
-        String token = "zbjforever0";
+        String token = JwtUtil.createJWT(
+                jwtProperties.getAdminSecretKey(),
+                jwtProperties.getAdminTtl(),
+                claims);
+        //String token = "zbjforever0";
         UserLoginVO userLoginVO = UserLoginVO.builder()
                 .id(user.getId())
                 .userName(user.getUsername())

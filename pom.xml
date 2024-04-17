@@ -14,6 +14,16 @@
         <spring-boot.version>2.7.6</spring-boot.version>
     </properties>
     <dependencies>
+
+<!--这个错误表明缺少了 javax.xml.bind.DatatypeConverter 类，这是因为 Java 9 及之后的版本中，
+    javax.xml.bind 包已被移除，因此无法在这些版本中直接使用该包中的类。解决这个问题的方法之一是将
+    javax.xml.bind 包添加到你的项目中，以便使用 DatatypeConverter 类。-->
+        <dependency>
+            <groupId>javax.xml.bind</groupId>
+            <artifactId>jaxb-api</artifactId>
+            <version>2.3.1</version>
+        </dependency>
+
         <dependency>
             <groupId>io.jsonwebtoken</groupId>
             <artifactId>jjwt</artifactId>
